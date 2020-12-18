@@ -28,8 +28,10 @@ async def on_message(message: discord.Message):
 
             for module in Modules.Modules:
                 help_message += f"_{Prefix}{module}_\n"
-                help_message += f"{Modules.libs[module].HELP}\n\n"
-
+                try:
+                    help_message += f"{Modules.libs[module].HELP}\n\n"
+                except AttributeError:
+                    help_message += "ERROR\n\n"
             await message.channel.send(help_message)
 
         else:
