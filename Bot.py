@@ -24,15 +24,20 @@ async def on_ready():
 async def on_message(message: discord.Message):
     if message.content.startswith(Prefix):
         if message.content.split(" ")[0] == f"{Prefix}help":
-            help_message = "**__Help__**\n\n"
+
+            embed = discord.Embed()
+            embed.title = "**__help__**"
+            embed.set_footer(text=f"requested by {message.author}", icon_url=message.author.avatar_url)
 
             for module in Modules.Modules:
-                help_message += f"_{Prefix}{module}_\n"
                 try:
-                    help_message += f"{Modules.libs[module].HELP}\n\n"
+                    value = f"{Modules.libs[module].HELP}\n\n"
                 except AttributeError:
-                    help_message += "ERROR\n\n"
-            await message.channel.send(help_message)
+                    value = "ERROR\n\n"
+
+                embed.add_field(name=f"_{Prefix}{module}_", value=value)
+
+            await message.channel.send(embed=embed)
 
         else:
             for module in Modules.Modules:
