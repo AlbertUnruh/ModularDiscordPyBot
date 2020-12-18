@@ -1,0 +1,31 @@
+{
+  "CONSTANTS": {
+    "Prefix": "-",
+    "Token": "insert Token here"
+  },
+  "colors": {
+    "blue":         3447003,
+    "blurple":      7506394,
+    "dark blue":    2123412,
+    "dark gold":    12745742,
+    "dark red":     10038562,
+    "dark green":   2067276,
+    "dark grey":    6323595,
+    "dark magenta": 11342935,
+    "dark orange":  11027200,
+    "dark purple":  7419530,
+    "dark teal":    1146986,
+    "darker grey":  5533306,
+    "green":        3066993,
+    "greyple":      10070709,
+    "gold":         15844367,
+    "light grey":   9936031,
+    "lighter gray": 9807270,
+    "magenta":      15277667,
+    "orange":       15105570,
+    "purple":       10181046,
+    "red":          15158332,
+    "teal":         1752220
+  },
+  "Author": "Albert Unruh"
+}
