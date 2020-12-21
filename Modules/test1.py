@@ -2,8 +2,9 @@ import discord
 import Utils
 
 HELP = Utils.Help()
+Branch = Utils.Branch.on_ready
 
 
-async def __main__(client: discord.Client, message: discord.Message):
+async def __main__(client: discord.Client):
 
-    await message.channel.send(f"test1")
+    print(f"{client.user} is online!")
