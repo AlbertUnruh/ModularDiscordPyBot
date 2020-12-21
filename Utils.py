@@ -1,5 +1,16 @@
 from typing import *
 
+try:
+    from NewClass import AttrDict
+except ImportError:
+    import AttrDict
+
+
+Branch = AttrDict({
+    "on_ready":     1,
+    "on_message":   2,
+})
+
 
 class Help(object):
     def __init__(self, _help: Optional[str] = None):
