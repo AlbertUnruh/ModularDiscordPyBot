@@ -51,7 +51,7 @@ async def on_message(message: discord.Message):
 
                         await Modules.libs[module].__main__(client=client, message=message)
 
-    elif client.user in message.mentions:
+    elif message.content.replace("!", "") == client.user.mention:
         await message.channel.send(f"My Prefix is `{Prefix}`.")
 
 
