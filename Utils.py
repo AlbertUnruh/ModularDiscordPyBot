@@ -6,6 +6,12 @@ except ImportError:
     import AttrDict
 
 
+'''
+You can see all the events in the following URL:
+https://discordpy.readthedocs.io/en/latest/api.html#event-reference
+'''
+
+
 Branch = AttrDict({
     "on_connect":                       0,  # argument(s) --> client: discord.Client
     "on_shard_connect":                 1,  # argument(s) --> client: discord.Client, shard_id: int
