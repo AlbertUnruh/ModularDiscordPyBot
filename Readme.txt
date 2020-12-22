@@ -8,7 +8,7 @@ The module `Modules` is for the commands, each `.py`-file has the same name as t
 /--------------------------------------
 | test.py:
 |
-| HELP = Utils.Help()  # you can leave the brackets empty, it will also works
+| HELP = Utils.Help()  # you can leave the brackets empty, it will also work
 | Branch = Utils.Branch.on_ready  # is to let the bot know, where the bot has to run the command
 |
 | async def __main__(client, message):  # client is a discord.Client and message is a discord.Message
