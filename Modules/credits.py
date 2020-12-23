@@ -1,20 +1,15 @@
 import discord
 import Utils
+from NewClass import AttrDict
 from json import load
 
-try:
-    from NewClass import AttrDict
-except ImportError:
-    import AttrDict
-
-
 HELP = Utils.Help("displays the credits")
-Branch = Utils.Branch.on_message
+EVENTS = [Utils.EVENT.on_message]
 
 
-async def __main__(client: discord.Client, message: discord.Message):
+async def __main__(client: discord.Client, _event: int, message: discord.Message):
 
     configs = AttrDict(load(open("Configs.json")))
     author = configs.Author
 
-    await message.channel.send(embed=discord.Embed(description=f"The Author is {author}\nModular Code: [here](https://github.com/AlbertUnruh/ModularDiscordBot)"))
+    await message.channel.send(embed=discord.Embed(description=f"The Author is {author}\nModular Code: [here](https://github.com/AlbertUnruh/ModularDiscordPyBot)"))
