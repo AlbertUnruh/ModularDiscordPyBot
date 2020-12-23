@@ -2,20 +2,19 @@ from os import listdir
 import importlib
 
 
-required = ["__main__", "Branch", "HELP"]
+required = ["__main__", "EVENTS", "HELP"]
 
-Modules = [_.replace(".py", "") for _ in listdir("./Modules") if _.endswith(".py") and not _ == "__init__.py"]
+MODULES = [module.replace(".py", "") for module in listdir("./Modules") if module.endswith(".py") and not module == "__init__.py"]
 libs = {}
 
 
-for lib in Modules[:]:
+for lib in MODULES.copy():
     libs[lib] = importlib.import_module(f"Modules.{lib}", "Modules")
 
     for attr in required:
         if not hasattr(libs[lib], attr):
             del libs[lib]
-            Modules.remove(lib)
-            continue
+            MODULES.remove(lib)
 
 
-del listdir, lib, importlib, attr
+del listdir, lib, importlib, attr, required
