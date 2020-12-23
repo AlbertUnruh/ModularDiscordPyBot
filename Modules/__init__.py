@@ -1,5 +1,6 @@
 from os import listdir
 import importlib
+import Utils
 
 
 required = ["__main__", "EVENTS", "HELP"]
@@ -9,12 +10,16 @@ libs = {}
 
 
 for lib in MODULES.copy():
+
     libs[lib] = importlib.import_module(f"Modules.{lib}", "Modules")
 
     for attr in required:
         if not hasattr(libs[lib], attr):
-            del libs[lib]
-            MODULES.remove(lib)
+            if attr == "HELP":
+                if Utils.EVENT.on_message in libs[lib].__getattribute__("EVENTS"):
+                    del libs[lib]
+                    MODULES.remove(lib)
+                    break
 
 
 del listdir, lib, importlib, attr, required
