@@ -16,7 +16,7 @@ for lib in MODULES.copy():
     for attr in required:
         if not hasattr(libs[lib], attr):
             if attr == "HELP":
-                if Utils.EVENT.on_message in libs[lib].__getattribute__("EVENTS"):
+                if Utils.EVENT.on_message in libs[lib].EVENTS:
                     del libs[lib]
                     MODULES.remove(lib)
                     break
