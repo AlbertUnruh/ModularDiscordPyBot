@@ -25,7 +25,7 @@ class AttrDict:
         self.__dict__[key] = value
 
     def __getattr__(self, item):
-        if item in self.__dict__.keys():
+        if item in list(self.__dict__.keys()):
             return self.__dict__[item]
         else:
             raise AttributeError(f"{item!r} is not a valid Attribute!")
