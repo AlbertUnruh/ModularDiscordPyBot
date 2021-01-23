@@ -7,7 +7,7 @@ import discord
 import Modules
 import Utils
 
-__version__ = "0.2.1"
+__version__ = "1.0.0"
 
 
 client = discord.Client()
@@ -96,6 +96,10 @@ async def on_shard_resumed(shard_id: int):
 
 @client.event
 async def on_error(event: str, *args, **kwargs):
+    print("ERROR BY DC!!!")
+    print(f"{event=}")
+    print(f"{args=}")
+    print(f"{kwargs=}")
 
     for module in Modules.MODULES:
         if Utils.EVENT.on_error in Modules.libs[module].EVENTS:
@@ -142,7 +146,8 @@ async def on_message(message: discord.Message):
 
             for module in Modules.MODULES:
                 if Utils.EVENT.on_message in Modules.libs[module].EVENTS:
-                    embed.add_field(name=f"_{Prefix}{module}_", value=f"{Modules.libs[module].HELP}\n\n")
+                    if not Modules.libs[module].HELP.__str__() == "vanish":
+                        embed.add_field(name=f"_{Prefix}{module}_", value=f"{Modules.libs[module].HELP}\n\n")
 
             await message.channel.send(embed=embed)
 
@@ -155,6 +160,10 @@ async def on_message(message: discord.Message):
 
     elif message.content.replace("!", "") == client.user.mention:
         await message.channel.send(f"My Prefix is `{Prefix}`.")
+
+    else:
+        if "antispam" in list(Modules.libs.keys()):
+            await Modules.libs["antispam"].__main__(client, Utils.EVENT.on_message, message)
 
 
 @client.event
