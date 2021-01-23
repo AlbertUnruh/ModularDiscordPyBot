@@ -8,7 +8,7 @@ The module `Modules` is for the commands, each `.py`-file has the same name as t
 /--------------------------------------
 | test.py:
 |
-| HELP = Utils.Help()  # you can leave the brackets empty, it will also work
+| HELP = Utils.Help()  # you can leave the brackets empty, it will also work  | If you use 'Utils.Help("vanish")' this cmd won't appear in the [PREFIX]help
 | EVENTS = [Utils.EVENT.on_message]  # is to let the bot know, where the bot has to run the command
 |
 | async def __main__(client, _event, message):  # client is a discord.Client and message is a discord.Message
